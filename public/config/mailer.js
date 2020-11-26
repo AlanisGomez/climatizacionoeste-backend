@@ -3,8 +3,8 @@ const hbs = require("nodemailer-express-handlebars")
 
 let transporter = nodemailer.createTransport({
     host: 'mail.climatizacionoeste.com',
-    port: 587,
-    secure: false,
+    port: 465,
+    secure: true,
     auth: {
         user: process.env.EMAIL,
         pass: process.env.PASSWORD
@@ -17,11 +17,11 @@ let transporter = nodemailer.createTransport({
 const handlebarOptions = {
     viewEngine: {
         extName: '.handlebars',
-        partialsDir: 'server/views/patials',
-        layoutsDir: 'server/views/layouts',
+        partialsDir: 'public/views/patials',
+        layoutsDir: 'public/views/layouts',
         defaultLayout: '',
     },
-    viewPath: 'server/views/templates',
+    viewPath: 'public/views/templates',
     extName: '.handlebars',
 };
 transporter.use('compile', hbs(handlebarOptions));
